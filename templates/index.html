@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Diabetes Prediction</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>Menu</h2>
+
+<a href="/">Diabetes Predictor</a>
+<a href="/history">Prediction History</a>
+<a href="/about">About the System</a>
+
+</div>
+
+
+<div class="main">
+
+<div class="container">
+
+<h1>Diabetes Prediction System</h1>
+
+<form method="POST">
+
+<div class="row">
+<label>Gender</label>
+<select name="Gender">
+<option value="Female">Female</option>
+<option value="Male">Male</option>
+</select>
+</div>
+
+<div class="row">
+<label>Age</label>
+<input type="number" name="Age" required>
+</div>
+
+<div class="row">
+<label>Pregnancies</label>
+<input type="number" name="Pregnancies">
+</div>
+
+<div class="row">
+<label>Glucose</label>
+<input type="number" name="Glucose" required>
+</div>
+
+<div class="row">
+<label>Blood Pressure</label>
+<input type="number" name="BloodPressure" required>
+</div>
+
+<div class="row">
+<label>Skin Thickness</label>
+<input type="number" name="SkinThickness" required>
+</div>
+
+<div class="row">
+<label>Insulin</label>
+<input type="number" name="Insulin" required>
+</div>
+
+<div class="row">
+<label>BMI</label>
+<input type="number" step="0.1" name="BMI" required>
+</div>
+
+<div class="row">
+<label>DPF</label>
+<input type="number" step="0.001" name="DPF" required>
+</div>
+
+<button type="submit">Predict</button>
+
+</form>
+
+
+{% if prediction %}
+
+<div class="result-box {% if 'has diabetes' in prediction %}high{% else %}low{% endif %}">
+{{ prediction }}
+<br>
+Confidence: {{ prob }}%
+</div>
+
+<div class="advice-box">
+<b>Health Advice:</b><br>
+{{ advice }}
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</body>
+</html>

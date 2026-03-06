@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Prediction Result</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>Menu</h2>
+
+<a href="/">Diabetes Predictor</a>
+<a href="/history">Prediction History</a>
+<a href="/about">About the System</a>
+
+</div>
+
+
+<div class="main">
+
+<div class="container">
+
+<h1>Prediction Result</h1>
+
+<div class="result-box {% if 'has diabetes' in prediction %}high{% else %}low{% endif %}">
+{{ prediction }}
+<br>
+Confidence: {{ prob }}%
+</div>
+
+<div class="advice-box">
+
+<b>Health Advice:</b>
+
+<p>{{ advice }}</p>
+
+</div>
+
+<br>
+
+<div class="center-btn">
+    <a href="/">
+        <button>Predict Another Patient</button>
+    </a>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
